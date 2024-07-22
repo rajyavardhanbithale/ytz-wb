@@ -1,9 +1,7 @@
-export default function demoRoute(){
-    return(
+export default function demoRoute() {
+    return (
         <>
-            <h1>
-                /demo-route
-            </h1>
+            <h1>/demo-route</h1>
         </>
     )
 }

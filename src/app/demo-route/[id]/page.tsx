@@ -1,15 +1,9 @@
 'use client'
 
-import { useParams } from "next/navigation";
+import { useParams } from 'next/navigation'
 
-export default function DemoParam(){
-    const productId = useParams();
+export default function DemoParam() {
+    const productId = useParams()
 
-
-    
-    return(
-        <>
-            {productId.id}
-        </>
-    )
+    return <>{productId.id}</>
 }
