@@ -1,2 +1,3 @@
 
-npm lint-staged
+npm run lint
+npm run prettier

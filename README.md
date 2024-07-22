@@ -1,5 +1,16 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Project Structure
+<img src='/README/image.png' />
+
+ref 1 = all image file or public files\
+ref 2 = components should be placed here\
+ref 3 = directory based routing ex: "demo-route" directory will be used as http://localhost:3000/demo-route/ or accessing url params http://localhost:3000/demo-route/57897
+ref 3.1 = next.js essentials\
+ref 4 = shadcn/ui components\
+ref 5 = redux \
+ref 6 = middleware\
+
 ## Getting Started
 
 First, run the development server:
