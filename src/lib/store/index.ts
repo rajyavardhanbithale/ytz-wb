@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import demoSlice from './demo/demoSlice'
+import productDataSlice from './dashboard/productData'
 
 export const store = configureStore({
     reducer: {
         demo: demoSlice,
+        productData:productDataSlice,
     },
 })
 
