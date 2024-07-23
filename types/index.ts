@@ -14,6 +14,4 @@ interface ProductData {
     imageUrl: string[]
 }
 
-export type {
-    ProductData
-}
+export type { ProductData }

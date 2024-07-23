@@ -1,10 +1,10 @@
 'use client'
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
     Form,
     FormControl,
@@ -13,66 +13,80 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import UploadImage from "./UploadImage";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/lib/store";
-import { ProductImageView } from "./ProductImageView";
-import { resetImageSource, saveProduct } from "@/lib/store/dashboard/productData";
-
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+} from '@/components/ui/dialog'
+import UploadImage from './UploadImage'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '@/lib/store'
+import { ProductImageView } from './ProductImageView'
+import {
+    resetImageSource,
+    saveProduct,
+} from '@/lib/store/dashboard/productData'
 
 const formSchema = z.object({
     productName: z.string().min(2, {
-        message: "Product name must be at least 2 characters.",
+        message: 'Product name must be at least 2 characters.',
     }),
     sellerName: z.string().min(2, {
-        message: "Seller name must be at least 2 characters.",
+        message: 'Seller name must be at least 2 characters.',
     }),
     description: z.string().min(10, {
-        message: "Description must be at least 10 characters.",
+        message: 'Description must be at least 10 characters.',
     }),
     price: z.coerce.number().gte(-1, 'Price must be greater than -1'),
-    discountPrice: z.coerce.number().gte(-1, 'Discount price must be greater than -1'),
-    totalAvailable: z.coerce.number().gte(-1, 'Total available be greater than -1'),
+    discountPrice: z.coerce
+        .number()
+        .gte(-1, 'Discount price must be greater than -1'),
+    totalAvailable: z.coerce
+        .number()
+        .gte(-1, 'Total available be greater than -1'),
 
     category: z.string().min(2, {
-        message: "Category name must be at least 2 characters.",
+        message: 'Category name must be at least 2 characters.',
     }),
     tags: z.string().min(2, {
-        message: "tags name must be at least 2 characters.",
+        message: 'tags name must be at least 2 characters.',
     }),
     inStock: z.boolean(),
-});
+})
 
 export default function AddProductDialog() {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            productName: "",
-            sellerName: "",
-            description: "",
+            productName: '',
+            sellerName: '',
+            description: '',
             price: 0,
             discountPrice: 0,
             dateAdded: new Date(),
             totalAvailable: 0,
             inStock: true,
-            tags: "",
-            category: ""
+            tags: '',
+            category: '',
         },
-    });
+    })
 
-    const imageURL = useSelector((state: RootState) => state.productData.imageURL)
+    const imageURL = useSelector(
+        (state: RootState) => state.productData.imageURL
+    )
     const status = useSelector((state: RootState) => state.productData.status)
 
     const dispatch = useDispatch<AppDispatch>()
     const onSubmit = (data: any) => {
-        dispatch(saveProduct({productData: data, imageData: imageURL}))
-    };
+        dispatch(saveProduct({ productData: data, imageData: imageURL }))
+    }
 
-    console.log(status);
-    
+    console.log(status)
 
     return (
         <>
@@ -88,8 +102,10 @@ export default function AddProductDialog() {
                         </DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
-
+                        <form
+                            onSubmit={form.handleSubmit(onSubmit)}
+                            className="space-y-1"
+                        >
                             <FormField
                                 control={form.control}
                                 name="productName"
@@ -97,7 +113,10 @@ export default function AddProductDialog() {
                                     <FormItem>
                                         <FormLabel>Product Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Product Name" {...field} />
+                                            <Input
+                                                placeholder="Product Name"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -110,7 +129,10 @@ export default function AddProductDialog() {
                                     <FormItem>
                                         <FormLabel>Seller Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Seller Name" {...field} />
+                                            <Input
+                                                placeholder="Seller Name"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -123,7 +145,10 @@ export default function AddProductDialog() {
                                     <FormItem>
                                         <FormLabel>Description</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Description" {...field} />
+                                            <Input
+                                                placeholder="Description"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -137,7 +162,11 @@ export default function AddProductDialog() {
                                         <FormItem>
                                             <FormLabel>Price</FormLabel>
                                             <FormControl>
-                                                <Input type="number" placeholder="Price" {...field} />
+                                                <Input
+                                                    type="number"
+                                                    placeholder="Price"
+                                                    {...field}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -148,7 +177,9 @@ export default function AddProductDialog() {
                                     name="discountPrice"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Discount Price</FormLabel>
+                                            <FormLabel>
+                                                Discount Price
+                                            </FormLabel>
                                             <FormControl>
                                                 <Input
                                                     type="number"
@@ -160,7 +191,6 @@ export default function AddProductDialog() {
                                         </FormItem>
                                     )}
                                 />
-
                             </div>
 
                             <FormField
@@ -170,7 +200,11 @@ export default function AddProductDialog() {
                                     <FormItem>
                                         <FormLabel>Total Available</FormLabel>
                                         <FormControl>
-                                            <Input type="number" placeholder="Total Available" {...field} />
+                                            <Input
+                                                type="number"
+                                                placeholder="Total Available"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -185,7 +219,11 @@ export default function AddProductDialog() {
                                         <FormItem>
                                             <FormLabel>Tags</FormLabel>
                                             <FormControl>
-                                                <Input type="text" placeholder="Tags separated with comma ," {...field} />
+                                                <Input
+                                                    type="text"
+                                                    placeholder="Tags separated with comma ,"
+                                                    {...field}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -199,7 +237,11 @@ export default function AddProductDialog() {
                                         <FormItem>
                                             <FormLabel>Category</FormLabel>
                                             <FormControl>
-                                                <Input type="text" placeholder="Category" {...field} />
+                                                <Input
+                                                    type="text"
+                                                    placeholder="Category"
+                                                    {...field}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -211,28 +253,33 @@ export default function AddProductDialog() {
                                 <UploadImage />
 
                                 <div className="flex my-4 mx-3 rounded-xl">
-                                    {imageURL && imageURL.map((url, idx) => (
-                                        // <img src={url} key={idx} className="w-12 h-12" />
-                                        <ProductImageView image={url} />
-                                    ))}
+                                    {imageURL &&
+                                        imageURL.map((url, idx) => (
+                                            // <img src={url} key={idx} className="w-12 h-12" />
+                                            <ProductImageView
+                                                image={url}
+                                                key={idx}
+                                            />
+                                        ))}
                                 </div>
                             </div>
 
                             <div className="flex gap-5">
-
                                 <Button type="submit">Submit</Button>
                                 <Button
                                     onClick={() => {
-                                        form.reset();
+                                        form.reset()
                                         dispatch(resetImageSource())
                                     }}
-                                    type="reset">Reset</Button>
+                                    type="reset"
+                                >
+                                    Reset
+                                </Button>
                             </div>
                         </form>
                     </Form>
                 </DialogContent>
             </Dialog>
-
         </>
-    );
+    )
 }

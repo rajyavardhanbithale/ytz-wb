@@ -1,35 +1,27 @@
-
 'use client'
 
-import { useDispatch, useSelector } from "react-redux";
-import ProductInput from "../components/Dashboard/ProductInput"
-import { AppDispatch, RootState } from "@/lib/store";
-import toast, { Toaster } from 'react-hot-toast';
-import { useEffect } from "react";
+import { useSelector } from 'react-redux'
+import ProductInput from '../components/Dashboard/ProductInput'
+import { RootState } from '@/lib/store'
+import toast, { Toaster } from 'react-hot-toast'
+import { useEffect } from 'react'
 
-
-export default function admin() {
-    const dispatch = useDispatch<AppDispatch>();
-    const status = useSelector((state: RootState) => state.productData.status);
-
+export default function Admin() {
+    const status = useSelector((state: RootState) => state.productData.status)
 
     useEffect(() => {
         if (status === 'pending') {
-            toast.loading('Adding...', { id: 'saving' });
+            toast.loading('Adding...', { id: 'saving' })
         } else if (status === 'success') {
-            toast.success('Product Added!', { id: 'saving' });
+            toast.success('Product Added!', { id: 'saving' })
         } else if (status === 'error') {
-            toast.error('Could not save.', { id: 'saving' });
+            toast.error('Could not save.', { id: 'saving' })
         }
-    }, [status]);
-
+    }, [status])
 
     return (
         <>
-            <Toaster
-                position="top-center"
-                reverseOrder={false}
-            />
+            <Toaster position="top-center" reverseOrder={false} />
             <ProductInput />
         </>
     )
