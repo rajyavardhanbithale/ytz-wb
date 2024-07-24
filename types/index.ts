@@ -9,9 +9,9 @@ interface ProductData {
     totalAvailable: number
     inStock: boolean
 
-    category: string
-    tags: string
-    imageUrl: string[]
+    category: string[] | string
+    tags: string[] | string
+    imageURL: string[]
 }
 
 export type { ProductData }

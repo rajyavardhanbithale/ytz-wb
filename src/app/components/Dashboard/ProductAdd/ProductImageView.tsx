@@ -10,12 +10,16 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog'
+import Image from "next/image"
 
 export function ProductImageView(props: { image: string }) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <img
+                <Image
+                    height={0}
+                    width={0}
+                    sizes="100vw"
                     src={props.image}
                     alt="image"
                     className="w-12 h-12 cursor-pointer"
@@ -26,7 +30,10 @@ export function ProductImageView(props: { image: string }) {
                     <DialogTitle>View Image</DialogTitle>
                 </DialogHeader>
 
-                <img
+                <Image
+                    height={0}
+                    width={0}
+                    sizes="100vw"
                     src={props.image}
                     alt="image"
                     className="w-full cursor-pointer"
