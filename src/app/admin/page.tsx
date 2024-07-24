@@ -13,7 +13,9 @@ export default function Admin() {
     const operation = useSelector(
         (state: RootState) => state.productData.operation
     )
-    const selection = useSelector((state: RootState) => state.operation.selectedOperation)
+    const selection = useSelector(
+        (state: RootState) => state.operation.selectedOperation
+    )
 
     useEffect(() => {
         if (status === 'pending') {
@@ -29,8 +31,6 @@ export default function Admin() {
         <>
             <Toaster position="top-center" reverseOrder={false} />
             {selection === 'Add Product' && <ProductInput />}
-
-            
 
             <div className="grid grid-cols-8">
                 <div className="sm:col-span-2 xl:col-span-1">

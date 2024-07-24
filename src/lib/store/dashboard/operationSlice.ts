@@ -1,14 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type STATE = {
-    selectedOperation: 'Dashboard' | 'Add Product' 
+    selectedOperation: 'Dashboard' | 'Add Product'
 }
-
 
 const initialState: STATE = {
     selectedOperation: 'Dashboard',
 }
-
 
 const operationSlice = createSlice({
     name: 'operationSlice',

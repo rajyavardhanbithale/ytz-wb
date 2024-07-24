@@ -1,35 +1,26 @@
 'use client'
 
-import { createClientBrowser } from '@/utils/supabase/client'
-
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { adminAuth } from "./action"
+import { useRouter, useSearchParams } from "next/navigation"
 
 export default function Login() {
+    const searchParams = useSearchParams()
+    const router = useRouter();
+
+    const searchParamsError = searchParams.get('error')
+
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [loading, setLoading] = useState(false)
 
-    const handleSubmit = async () => {
-        await login(email, password)
-    }
-
-    const supabase = createClientBrowser()
-
-    const login = async (email: string, password: string) => {
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-        })
-
-        if (error) {
-            alert(error.message)
-            return
+    useEffect(() => {
+        if (searchParamsError) {
+            setLoading(false)
         }
+    }, [searchParamsError])
 
-        if (data) {
-            window.location.href = '/admin'
-        }
-    }
+
 
     return (
         <>
@@ -38,7 +29,7 @@ export default function Login() {
                     <h2 className="text-3xl font-extrabold mb-8 text-center text-gray-800">
                         Admin Login
                     </h2>
-                    <form onSubmit={handleSubmit}>
+                    <div>
                         <div className="mb-6">
                             <label
                                 className="block text-gray-700 mb-2 text-sm font-medium"
@@ -71,15 +62,24 @@ export default function Login() {
                                 required
                             />
                         </div>
-
+                        <span>
+                            {searchParamsError && (
+                                <p className="text-red-500 text-lg mb-4">
+                                    {searchParamsError}
+                                </p>
+                            )}
+                        </span>
                         <button
+                            onClick={async () => {
+                                await adminAuth({ email, password });
+                                setLoading(true);
+                            }}
                             type="submit"
-                            disabled={loading}
-                            className={`w-full py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`w-full py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out cursor-pointer`}
                         >
-                            {loading ? 'Logging in...' : 'Login'}
+                            Login
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </>

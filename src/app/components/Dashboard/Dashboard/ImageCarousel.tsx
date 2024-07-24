@@ -34,24 +34,25 @@ export default function ImageCarousel(props: { images: string[] }) {
                     &gt;
                 </CarouselNext>
                 <CarouselContent>
-                    {images && images.map((url, index) => (
-                        <CarouselItem key={index}>
-                            <Image
-                                height={0}
-                                width={0}
-                                sizes="100vw"
-                                className="w-full h-48 object-contain cursor-pointer"
-                                src={url}
-                                alt={url}
-                                onClick={() => {
-                                    setOpen(true)
-                                    setUrl(url)
-                                }}
-                            />
-                        </CarouselItem>
-                    ))}
+                    {images &&
+                        images.map((url, index) => (
+                            <CarouselItem key={index}>
+                                <Image
+                                    height={0}
+                                    width={0}
+                                    sizes="100vw"
+                                    className="w-full h-48 object-contain cursor-pointer"
+                                    src={url}
+                                    alt={url}
+                                    onClick={() => {
+                                        setOpen(true)
+                                        setUrl(url)
+                                    }}
+                                />
+                            </CarouselItem>
+                        ))}
 
-                    {!images &&
+                    {!images && (
                         <Image
                             height={0}
                             width={0}
@@ -59,9 +60,8 @@ export default function ImageCarousel(props: { images: string[] }) {
                             className="w-full h-48 object-contain cursor-pointer"
                             src="https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
                             alt="no image"
-                           
                         />
-                    }
+                    )}
                 </CarouselContent>
             </Carousel>
 

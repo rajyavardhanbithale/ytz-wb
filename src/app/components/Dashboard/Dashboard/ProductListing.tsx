@@ -24,7 +24,9 @@ export default function ProductListing() {
 
     useEffect(() => {
         if (
-            (operation === 'Updating' || operation === 'Deleting' || operation === 'Adding') &&
+            (operation === 'Updating' ||
+                operation === 'Deleting' ||
+                operation === 'Adding') &&
             status === 'success'
         ) {
             dispatch(fetchProduct())

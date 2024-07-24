@@ -31,8 +31,8 @@ import {
     resetImageSource,
     saveProduct,
 } from '@/lib/store/dashboard/productData'
-import { useState } from "react"
-import { selectOperation } from "@/lib/store/dashboard/operationSlice"
+import { useState } from 'react'
+import { selectOperation } from '@/lib/store/dashboard/operationSlice'
 
 const formSchema = z.object({
     productName: z.string().min(1, {
@@ -62,7 +62,9 @@ const formSchema = z.object({
 })
 
 export default function AddProductDialog() {
-    const selection = useSelector((state: RootState) => state.operation.selectedOperation)
+    const selection = useSelector(
+        (state: RootState) => state.operation.selectedOperation
+    )
     const [open, setOpen] = useState<boolean>(selection === 'Add Product')
 
     const form = useForm({
@@ -86,7 +88,6 @@ export default function AddProductDialog() {
     )
 
     const dispatch = useDispatch<AppDispatch>()
-   
 
     const onSubmit = (data: any) => {
         dispatch(saveProduct({ productData: data, imageData: imageURL }))
@@ -96,7 +97,6 @@ export default function AddProductDialog() {
         setOpen(false)
         dispatch(selectOperation('Dashboard'))
     }
-
 
     return (
         <>

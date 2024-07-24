@@ -1,14 +1,20 @@
-import { AppDispatch } from "@/lib/store";
-import { selectOperation } from "@/lib/store/dashboard/operationSlice";
-import React, { useState } from 'react';
-import { HiMenu, HiX } from 'react-icons/hi';
-import { useDispatch } from "react-redux";
+import { AppDispatch } from '@/lib/store'
+import { selectOperation } from '@/lib/store/dashboard/operationSlice'
+import React, { useState } from 'react'
+import { HiMenu, HiX } from 'react-icons/hi'
+import { useDispatch } from 'react-redux'
 
 export default function Sidebar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleSidebar = () => setIsOpen(!isOpen);
-    const dispatch = useDispatch<AppDispatch>();
-    const options = ['Dashboard', 'Add Product', 'Orders', 'Customers', 'Settings'];
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleSidebar = () => setIsOpen(!isOpen)
+    const dispatch = useDispatch<AppDispatch>()
+    const options = [
+        'Dashboard',
+        'Add Product',
+        'Orders',
+        'Customers',
+        'Settings',
+    ]
 
     return (
         <>
@@ -42,5 +48,5 @@ export default function Sidebar() {
                 </nav>
             </div>
         </>
-    );
+    )
 }
