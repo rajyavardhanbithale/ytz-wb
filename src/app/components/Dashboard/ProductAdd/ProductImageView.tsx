@@ -10,7 +10,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog'
-import Image from "next/image"
+import Image from 'next/image'
 
 export function ProductImageView(props: { image: string }) {
     return (

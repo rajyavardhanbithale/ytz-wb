@@ -21,7 +21,7 @@ const initialState: STATE = {
     productData: null,
     status: 'idle',
     operation: '',
-    productDataUpdated: null
+    productDataUpdated: null,
 }
 
 export const saveProduct = createAsyncThunk(
@@ -36,9 +36,13 @@ export const saveProduct = createAsyncThunk(
         const merge = {
             ...productData,
             id: nanoid(),
-            tags: typeof productData.tags === 'string' && productData.tags.split(','),
+            tags:
+                typeof productData.tags === 'string' &&
+                productData.tags.split(','),
             timestamp: Date.now(),
-            category: typeof productData.category === 'string' && productData.category.split(','),
+            category:
+                typeof productData.category === 'string' &&
+                productData.category.split(','),
             imageURL: imageData,
         }
 
@@ -50,40 +54,37 @@ export const saveProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
     'product/update',
-    async (action: {
-        productData: ProductData
-        id: string
-    }) => {
+    async (action: { productData: ProductData; id: string }) => {
         const { productData, id } = action
-
 
         const merge = {
             ...productData,
             id: id,
-            tags: typeof productData.tags === 'string' && productData.tags.split(','),
-            category: typeof productData.category === 'string' && productData.category.split(','),
+            tags:
+                typeof productData.tags === 'string' &&
+                productData.tags.split(','),
+            category:
+                typeof productData.category === 'string' &&
+                productData.category.split(','),
         }
-            ;
-
         const req = axios.post('/api/product-update', merge)
 
         return req
     }
 )
 
-export const fetchProduct = createAsyncThunk(
-    'product/fetch',
-    async () => {
-        const response = await axios.get('/api/product-get')
-        return response.data.data as ProductData[]
-    }
-)
+export const fetchProduct = createAsyncThunk('product/fetch', async () => {
+    const response = await axios.get('/api/product-get')
+    return response.data.data as ProductData[]
+})
 
 export const deleteProduct = createAsyncThunk(
     'product/delete',
-    async (productID:string) => {
-        const response = await axios.get(`http://localhost:3000/api/product-delete?productID=${productID}`)
-        
+    async (productID: string) => {
+        const response = await axios.get(
+            `http://localhost:3000/api/product-delete?productID=${productID}`
+        )
+
         return response.data
     }
 )
@@ -132,9 +133,12 @@ const productDataSlice = createSlice({
                 state.status = 'error'
             })
 
-            .addCase(fetchProduct.fulfilled, (state, action:PayloadAction<ProductData[]>) => {
-                state.productDataUpdated = action.payload
-            })
+            .addCase(
+                fetchProduct.fulfilled,
+                (state, action: PayloadAction<ProductData[]>) => {
+                    state.productDataUpdated = action.payload
+                }
+            )
 
             .addCase(deleteProduct.pending, (state) => {
                 state.operation = 'Deleting'

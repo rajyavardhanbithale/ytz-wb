@@ -1,17 +1,17 @@
 'use client'
 
-import { createClientBrowser } from "@/utils/supabase/client"
+import { createClientBrowser } from '@/utils/supabase/client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function Login() {
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [loading, setLoading] = useState(false)
 
     const handleSubmit = async () => {
         await login(email, password)
-    };
+    }
 
     const supabase = createClientBrowser()
 
@@ -21,8 +21,6 @@ export default function Login() {
             password: password,
         })
 
-   
-        
         if (error) {
             alert(error.message)
             return
@@ -31,17 +29,21 @@ export default function Login() {
         if (data) {
             window.location.href = '/admin'
         }
-
     }
 
     return (
         <>
             <div className="flex items-center justify-center min-h-screen ">
                 <div className="bg-white p-12 rounded-lg shadow-lg max-w-sm w-full">
-                    <h2 className="text-3xl font-extrabold mb-8 text-center text-gray-800">Admin Login</h2>
+                    <h2 className="text-3xl font-extrabold mb-8 text-center text-gray-800">
+                        Admin Login
+                    </h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-6">
-                            <label className="block text-gray-700 mb-2 text-sm font-medium" htmlFor="email">
+                            <label
+                                className="block text-gray-700 mb-2 text-sm font-medium"
+                                htmlFor="email"
+                            >
                                 Email
                             </label>
                             <input
@@ -54,7 +56,10 @@ export default function Login() {
                             />
                         </div>
                         <div className="mb-6">
-                            <label className="block text-gray-700 mb-2 text-sm font-medium" htmlFor="password">
+                            <label
+                                className="block text-gray-700 mb-2 text-sm font-medium"
+                                htmlFor="password"
+                            >
                                 Password
                             </label>
                             <input
@@ -66,7 +71,7 @@ export default function Login() {
                                 required
                             />
                         </div>
-                       
+
                         <button
                             type="submit"
                             disabled={loading}
@@ -74,7 +79,6 @@ export default function Login() {
                         >
                             {loading ? 'Logging in...' : 'Login'}
                         </button>
-                        
                     </form>
                 </div>
             </div>

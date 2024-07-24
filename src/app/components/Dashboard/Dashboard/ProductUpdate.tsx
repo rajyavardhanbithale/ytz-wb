@@ -23,11 +23,11 @@ import {
     DialogDescription,
 } from '@/components/ui/dialog'
 
-import { ProductData } from "../../../../../types"
-import { IoPencilOutline, IoTrashBinOutline } from "react-icons/io5"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/lib/store"
-import { deleteProduct, updateProduct } from "@/lib/store/dashboard/productData"
+import { ProductData } from '../../../../../types'
+import { IoPencilOutline, IoTrashBinOutline } from 'react-icons/io5'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/lib/store'
+import { deleteProduct, updateProduct } from '@/lib/store/dashboard/productData'
 
 const formSchema = z.object({
     productName: z.string().min(2, {
@@ -81,7 +81,6 @@ function ProductUpdate(props: { productData: ProductData }) {
     const onSubmit = (data: any) => {
         dispatch(updateProduct({ productData: data, id: productData.id }))
     }
-
 
     return (
         <>
@@ -246,9 +245,6 @@ function ProductUpdate(props: { productData: ProductData }) {
                                 />
                             </div>
 
-
-
-
                             <div className="flex gap-5">
                                 <Button type="submit">Submit</Button>
                                 <Button
@@ -268,7 +264,6 @@ function ProductUpdate(props: { productData: ProductData }) {
     )
 }
 
-
 function ProductDelete(props: { productID: string }) {
     const dispatch = useDispatch<AppDispatch>()
 
@@ -284,22 +279,22 @@ function ProductDelete(props: { productID: string }) {
                     <DialogHeader>
                         <DialogTitle>Are you absolutely sure?</DialogTitle>
                         <DialogDescription>
-                            This action cannot be undone. This will permanently delete the product
-                            and remove data from our servers.
+                            This action cannot be undone. This will permanently
+                            delete the product and remove data from our servers.
                         </DialogDescription>
                     </DialogHeader>
                     <button
                         onClick={() => {
                             dispatch(deleteProduct(props.productID))
                         }}
-                        className="w-fit mt-5 flex items-center text-base bg-red-600 px-4 py-2 rounded-lg text-white hover:bg-red-700 transition-colors duration-300">
+                        className="w-fit mt-5 flex items-center text-base bg-red-600 px-4 py-2 rounded-lg text-white hover:bg-red-700 transition-colors duration-300"
+                    >
                         <IoTrashBinOutline className="mr-2" /> Delete
                     </button>
                 </DialogContent>
             </Dialog>
         </>
     )
-
 }
 
 export { ProductUpdate, ProductDelete }

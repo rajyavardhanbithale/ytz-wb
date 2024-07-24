@@ -5,7 +5,7 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel'
 import {
     Dialog,
     DialogContent,
@@ -13,15 +13,13 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
-import Image from "next/image";
-import { useState } from "react";
-
+} from '@/components/ui/dialog'
+import Image from 'next/image'
+import { useState } from 'react'
 
 export default function ImageCarousel(props: { images: string[] }) {
-
     const [open, setOpen] = useState(false)
-    const [url, setUrl] = useState("")
+    const [url, setUrl] = useState('')
 
     const images = props.images
     return (
@@ -36,8 +34,7 @@ export default function ImageCarousel(props: { images: string[] }) {
                     &gt;
                 </CarouselNext>
                 <CarouselContent>
-                    {images.map((url, index) => (
-
+                    {images && images.map((url, index) => (
                         <CarouselItem key={index}>
                             <Image
                                 height={0}
@@ -46,21 +43,36 @@ export default function ImageCarousel(props: { images: string[] }) {
                                 className="w-full h-48 object-contain cursor-pointer"
                                 src={url}
                                 alt={url}
-                                onClick={() => { setOpen(true); setUrl(url) }}
+                                onClick={() => {
+                                    setOpen(true)
+                                    setUrl(url)
+                                }}
                             />
                         </CarouselItem>
-
-
                     ))}
+
+                    {!images &&
+                        <Image
+                            height={0}
+                            width={0}
+                            sizes="100vw"
+                            className="w-full h-48 object-contain cursor-pointer"
+                            src="https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
+                            alt="no image"
+                           
+                        />
+                    }
                 </CarouselContent>
             </Carousel>
 
-            <ImageViewPopUP open={open} setOpen={setOpen} url={url}></ImageViewPopUP>
-
+            <ImageViewPopUP
+                open={open}
+                setOpen={setOpen}
+                url={url}
+            ></ImageViewPopUP>
         </>
     )
 }
-
 
 function ImageViewPopUP(props: any) {
     return (
@@ -82,7 +94,6 @@ function ImageViewPopUP(props: any) {
                     />
                 </DialogContent>
             </Dialog>
-
         </>
     )
 }

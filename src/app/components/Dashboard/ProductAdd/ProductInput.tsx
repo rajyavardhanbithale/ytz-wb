@@ -31,16 +31,18 @@ import {
     resetImageSource,
     saveProduct,
 } from '@/lib/store/dashboard/productData'
+import { useState } from "react"
+import { selectOperation } from "@/lib/store/dashboard/operationSlice"
 
 const formSchema = z.object({
-    productName: z.string().min(2, {
-        message: 'Product name must be at least 2 characters.',
+    productName: z.string().min(1, {
+        message: 'Product name must be at least 1 characters.',
     }),
-    sellerName: z.string().min(2, {
-        message: 'Seller name must be at least 2 characters.',
+    sellerName: z.string().min(1, {
+        message: 'Seller name must be at least 1 characters.',
     }),
-    description: z.string().min(10, {
-        message: 'Description must be at least 10 characters.',
+    description: z.string().min(1, {
+        message: 'Description must be at least 1 characters.',
     }),
     price: z.coerce.number().gte(-1, 'Price must be greater than -1'),
     discountPrice: z.coerce
@@ -60,6 +62,9 @@ const formSchema = z.object({
 })
 
 export default function AddProductDialog() {
+    const selection = useSelector((state: RootState) => state.operation.selectedOperation)
+    const [open, setOpen] = useState<boolean>(selection === 'Add Product')
+
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -79,21 +84,26 @@ export default function AddProductDialog() {
     const imageURL = useSelector(
         (state: RootState) => state.productData.imageURL
     )
-    const status = useSelector((state: RootState) => state.productData.status)
 
     const dispatch = useDispatch<AppDispatch>()
+   
+
     const onSubmit = (data: any) => {
         dispatch(saveProduct({ productData: data, imageData: imageURL }))
     }
 
-    console.log(status)
+    const handleOpenChange = () => {
+        setOpen(false)
+        dispatch(selectOperation('Dashboard'))
+    }
+
 
     return (
         <>
-            <Dialog>
-                <DialogTrigger asChild>
+            <Dialog open={open} onOpenChange={handleOpenChange}>
+                {/* <DialogTrigger asChild>
                     <Button variant="outline">Add Product</Button>
-                </DialogTrigger>
+                </DialogTrigger> */}
                 <DialogContent className="sm:max-w-md">
                     <DialogHeader>
                         <DialogTitle>Add Product</DialogTitle>

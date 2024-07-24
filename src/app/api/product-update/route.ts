@@ -7,19 +7,17 @@ export async function POST(req: NextRequest) {
 
     const supabase = createClient()
 
-    const bodyRemovedId: any = { ...body };
-    delete bodyRemovedId.id;
+    const bodyRemovedId: any = { ...body }
+    delete bodyRemovedId.id
 
     const { error } = await supabase
         .from('product-data')
         .update(bodyRemovedId)
         .eq('id', body.id)
 
+    console.log(error)
 
-    console.log(error);
-
-
-    if (error){
+    if (error) {
         return NextResponse.json(
             {
                 message: 'internal server error',
