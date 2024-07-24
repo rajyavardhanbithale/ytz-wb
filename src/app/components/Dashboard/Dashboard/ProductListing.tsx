@@ -47,6 +47,10 @@ export default function ProductListing() {
                                 product={product}
                             />
                         ))}
+
+                    {!products && 
+                        <div className="text-3xl">Loading ...</div>
+                    }
                 </div>
             </div>
         </>

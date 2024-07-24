@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function Login() {
     const searchParams = useSearchParams()
-    const router = useRouter()
+
 
     const searchParamsError = searchParams.get('error')
 
@@ -19,6 +19,18 @@ export default function Login() {
             setLoading(false)
         }
     }, [searchParamsError])
+
+    const handleLogin = async () => {
+        setLoading(true) 
+        try {
+            await adminAuth({ email, password })
+        } catch (error) {
+          
+            console.error('Login failed', error)
+        } finally {
+            setLoading(false) 
+        }
+    }
 
     return (
         <>
@@ -60,22 +72,22 @@ export default function Login() {
                                 required
                             />
                         </div>
-                        <span>
-                            {searchParamsError && (
-                                <p className="text-red-500 text-lg mb-4">
-                                    {searchParamsError}
-                                </p>
-                            )}
-                        </span>
+                        {searchParamsError && (
+                            <p className="text-red-500 text-lg mb-4">
+                                {searchParamsError}
+                            </p>
+                        )}
                         <button
-                            onClick={async () => {
-                                await adminAuth({ email, password })
-                                setLoading(true)
-                            }}
-                            type="submit"
-                            className={`w-full py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out cursor-pointer`}
+                            onClick={handleLogin}
+                            type="button" // Changed to 'button' to prevent form submission
+                            disabled={loading}
+                            className={`w-full py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                            Login
+                            {loading ? (
+                                <span>Loading...</span> // You can replace this with a spinner component if desired
+                            ) : (
+                                'Login'
+                            )}
                         </button>
                     </div>
                 </div>

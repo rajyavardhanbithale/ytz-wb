@@ -40,13 +40,17 @@ export default function Sidebar() {
                         <button
                             key={idx}
                             className="text-xl bg-blue-900/20 rounded-2xl block w-full p-4 text-left hover:bg-blue-700 duration-700"
-                            onClick={() => dispatch(selectOperation(item))}
+                            onClick={() => {
+                                dispatch(selectOperation(item));
+                                setIsOpen(false);
+                            }
+                            }
                         >
                             {item}
                         </button>
                     ))}
                 </nav>
-            </div>
+            </div >
         </>
     )
 }
