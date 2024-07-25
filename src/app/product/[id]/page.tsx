@@ -10,6 +10,7 @@ const pathname = process.env.NEXT_PUBLIC_PATHNAME
 async function fetchProduct(props: { productID: string }) {
     const response = await fetch(
         `${pathname}/api/product-get?id=${props.productID}`
+        , { cache: 'no-store' }
     )
     const product = await response.json()
     return product as ProductData
