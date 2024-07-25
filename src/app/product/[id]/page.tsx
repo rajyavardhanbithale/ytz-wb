@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: any) {
     const productID = params.id
     const metaInfo = await fetchProduct({ productID: productID })
     return {
-        title: metaInfo.productName,
+        title: 'TYZ ' + metaInfo.productName,
         description: metaInfo.description,
         openGraph: {
             images: metaInfo.imageURL,
@@ -63,7 +63,7 @@ export default async function ProductPage({ params }: any) {
                                             ((product.price -
                                                 product.discountPrice) /
                                                 product.price) *
-                                                100
+                                            100
                                         )}
                                         % off
                                     </span>
@@ -108,7 +108,7 @@ export default async function ProductPage({ params }: any) {
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-4">
+                            <div className="mt-5 sm:mt-0 flex flex-wrap items-center gap-4">
                                 <button className="bg-blue-500 text-white px-4 py-2 rounded-md font-bold flex items-center hover:bg-blue-600 duration-500">
                                     <IoCall className="mr-2 mb-0.5" />
                                     Call
