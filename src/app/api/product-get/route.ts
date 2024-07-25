@@ -16,11 +16,9 @@ export async function GET(req: NextRequest) {
             .single()
 
         return NextResponse.json(data, { status: 200 })
-    } 
-        
-    const { data, error } = await supabase.from('product-data').select('*')
-    
+    }
 
+    const { data, error } = await supabase.from('product-data').select('*')
 
     return NextResponse.json(
         {

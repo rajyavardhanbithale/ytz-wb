@@ -48,9 +48,7 @@ export default function ProductListing() {
                             />
                         ))}
 
-                    {!products && 
-                        <div className="text-3xl">Loading ...</div>
-                    }
+                    {!products && <div className="text-3xl">Loading ...</div>}
                 </div>
             </div>
         </>

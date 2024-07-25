@@ -1,13 +1,13 @@
 'use client'
-import Image from "next/image";
-import React from 'react';
+import Image from 'next/image'
+import React from 'react'
 
 interface ProductImageViewProps {
-    image: string[];
+    image: string[]
 }
 
 export default function ProductPageImage({ image }: ProductImageViewProps) {
-    const [selectedImage, setSelectedImage] = React.useState(image[0]);
+    const [selectedImage, setSelectedImage] = React.useState(image[0])
 
     return (
         <>
@@ -40,7 +40,6 @@ export default function ProductPageImage({ image }: ProductImageViewProps) {
                     </div>
                 ))}
             </div>
-
         </>
-    );
+    )
 }
