@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
 import { StoreProvider } from '@/lib/store/StroreProvider'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/app/components/Navbar'
 
 const inter = Poppins({
     subsets: ['latin'],
