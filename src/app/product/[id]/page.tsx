@@ -84,25 +84,27 @@ export default async function ProductPage({ params }: any) {
 
                             <div className="flex flex-col gap-4">
                                 <div className="flex flex-wrap gap-2">
-                                    {Array.isArray(product.category) && product.category.map((cat, idx) => (
-                                        <span
-                                            key={idx}
-                                            className="cursor-pointer bg-blue-100 text-blue-500 px-3 py-1 rounded-full text-sm font-semibold"
-                                        >
-                                            {cat}
-                                        </span>
-                                    ))}
+                                    {Array.isArray(product.category) &&
+                                        product.category.map((cat, idx) => (
+                                            <span
+                                                key={idx}
+                                                className="cursor-pointer bg-blue-100 text-blue-500 px-3 py-1 rounded-full text-sm font-semibold"
+                                            >
+                                                {cat}
+                                            </span>
+                                        ))}
                                 </div>
 
                                 <div className="flex flex-wrap gap-2">
-                                    {Array.isArray(product.tags) &&  product.tags.map((tag, idx) => (
-                                        <span
-                                            key={idx}
-                                            className="cursor-pointer bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
+                                    {Array.isArray(product.tags) &&
+                                        product.tags.map((tag, idx) => (
+                                            <span
+                                                key={idx}
+                                                className="cursor-pointer bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
                                 </div>
                             </div>
 
