@@ -23,7 +23,7 @@ import {
     DialogDescription,
 } from '@/components/ui/dialog'
 
-import { ProductData } from '../../../../../types'
+import { ProductData } from '../../../../types'
 import { IoPencilOutline, IoTrashBinOutline } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/lib/store'

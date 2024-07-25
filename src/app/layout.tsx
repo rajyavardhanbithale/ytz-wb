@@ -23,11 +23,15 @@ export default function RootLayout({
         <StoreProvider>
             <html lang="en">
                 <body className={inter.className}>
-                     <div className="relative w-full flex items-center justify-center">
-                         <Navbar/>
-                     </div>
-                    {children}
-                 </body>
+                    <div className="relative w-full flex items-center justify-center">
+                        <Navbar />
+                    </div>
+
+                    <div className="mt-24">
+                        {children}
+
+                    </div>
+                </body>
             </html>
         </StoreProvider>
     )

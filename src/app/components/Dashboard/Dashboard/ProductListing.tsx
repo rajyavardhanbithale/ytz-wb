@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { ProductData } from '../../../../../types'
+import { ProductData } from '../../../../types'
 import ProductListingCard from './ProfuctListingCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/lib/store'
