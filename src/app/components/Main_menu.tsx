@@ -17,7 +17,7 @@ import {
 
 function Main_menu() {
   return (
-    <Menubar className='mt-5 border-none md:mt-16 w-full md:w-[80%]  h-[20%] flex justify-around items-center bg-white z-50'>
+    <Menubar className=' border-none md:mt-16 w-full md:w-[80%]  h-[20%] flex justify-around items-center bg-white '>
       <MenubarMenu>
         <MenubarTrigger className='flex flex-col justify-center items-center'>
           <img className='w-10 h-20' src="/grocery.jpg" alt="afs" />
