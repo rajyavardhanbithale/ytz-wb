@@ -22,7 +22,7 @@ export default function RootLayout({
     return (
         <StoreProvider>
             <html lang="en">
-                <body className={inter.className+ "   bg-gray-100" } >
+                <body className={inter.className+ "   bg-gray-100 w-full h-full" } >
                      <div className="relative w-full flex items-center justify-center h-5">
                          <Navbar/>
                      </div>
