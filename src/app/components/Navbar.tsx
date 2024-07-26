@@ -15,7 +15,7 @@ import { IoCart } from "react-icons/io5";
 
 function Navbar() {
   return (
-    <div className='w-full h-[8%] bg-white flex justify-between md:justify-center items-center z-50 fixed top-0 left-0 '>
+    <div className='w-full h-[6%] md:h-[8%] bg-white flex justify-between md:justify-center items-center z-50 fixed top-0 left-0 '>
       <div className="mx-2">
         <img className='mr-10' src="" alt="web logo" />
       </div>
@@ -32,33 +32,34 @@ function Navbar() {
           />
         </div>
       </div>
+      <div className='w-fit h-[60%] flex justify-center md:justify-between items-center'>
 
-      <div className='mx-10 w-fit md:w-[7%] h-[60%] bg-white px-2 py-1 rounded-md border-none  hover:bg-blue-600 flex flex-col items-center justify-center ' >
-        {/* <VscAccount className='h-full font-bold' /> Login <IoIosArrowDropdown /> */}
-        <NavigationMenu className='w-full h-full  flex justify-around items-center'>
-          <NavigationMenuList>
-            <NavigationMenuItem>
+        <div className='ml-10 w-fit h-full bg-white px-2 py-1 rounded-md border-none  md:hover:bg-blue-600 flex flex-col items-center justify-center ' >
+          {/* <VscAccount className='h-full font-bold' /> Login <IoIosArrowDropdown /> */}
+          <NavigationMenu className='w-full h-full  flex justify-around items-center'>
+            <NavigationMenuList>
+              <NavigationMenuItem>
 
-              <NavigationMenuTrigger className='w-full flex justify-around items-center hover:text-white text-lg transition delay-200'>
-                <VscAccount className='h-full font-bold text-xl mx-1' /> Login
-              </NavigationMenuTrigger>
+                <NavigationMenuTrigger className='w-full flex justify-around items-center md:hover:text-white text-lg transition delay-200'>
+                  <VscAccount className='h-full font-bold text-xl mx-1' /> Login
+                </NavigationMenuTrigger>
 
-              <NavigationMenuContent>
-                <NavigationMenuLink>
-                  Link
-                </NavigationMenuLink>
-              </NavigationMenuContent>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>
+                    Link
+                  </NavigationMenuLink>
+                </NavigationMenuContent>
 
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+        </div>
+        <div className="mx-0 md:ml-2 w-fit h-full flex justify-around items-center  text-xl hover:bg-gray-100 px-2 py-1 rounded-md transition-all delay-300">
+          <IoCart className='mr-1' /> <h1 className='hidden md:block'>Cart</h1>
+        </div>
 
       </div>
-      <div className="w-fit  flex justify-around items-center  text-xl hover:bg-gray-100 px-2 py-1 rounded-md transition-all delay-300">
-        <IoCart className='mx-1'/> Cart
-      </div>
-
-
     </div>
   )
 }
