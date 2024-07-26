@@ -1,5 +1,5 @@
 'use client'
-import { ProductData } from '../../../../../types'
+import { ProductData } from '../../../../types'
 import ImageCarousel from './ImageCarousel'
 import { ProductDelete, ProductUpdate } from './ProductUpdate'
 

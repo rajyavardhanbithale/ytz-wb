@@ -4,7 +4,7 @@ import {
     nanoid,
     PayloadAction,
 } from '@reduxjs/toolkit'
-import { ProductData } from '../../../../types'
+import { ProductData } from '../../../types'
 import { customAlphabet } from 'nanoid'
 import axios from 'axios'
 

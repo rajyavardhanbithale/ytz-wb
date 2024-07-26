@@ -7,7 +7,6 @@ import { useRouter, useSearchParams } from 'next/navigation'
 export default function Login() {
     const searchParams = useSearchParams()
 
-
     const searchParamsError = searchParams.get('error')
 
     const [email, setEmail] = useState<string>('')
@@ -21,14 +20,13 @@ export default function Login() {
     }, [searchParamsError])
 
     const handleLogin = async () => {
-        setLoading(true) 
+        setLoading(true)
         try {
             await adminAuth({ email, password })
         } catch (error) {
-          
             console.error('Login failed', error)
         } finally {
-            setLoading(false) 
+            setLoading(false)
         }
     }
 
