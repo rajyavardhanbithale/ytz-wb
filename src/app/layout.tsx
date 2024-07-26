@@ -22,22 +22,12 @@ export default function RootLayout({
     return (
         <StoreProvider>
             <html lang="en">
-<<<<<<< HEAD
-                <body className={inter.className+ "  bg-gray-100" } >
+                <body className={inter.className+ "   bg-gray-200" } >
                      <div className="relative w-full flex items-center justify-center h-5">
                          <Navbar/>
                      </div>
                     {children}
                  </body>
-=======
-                <body className={inter.className}>
-                    <div className="relative w-full flex items-center justify-center">
-                        <Navbar />
-                    </div>
-
-                    <div className="mt-24">{children}</div>
-                </body>
->>>>>>> origin/main
             </html>
         </StoreProvider>
     )
