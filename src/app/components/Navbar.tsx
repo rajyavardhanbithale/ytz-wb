@@ -10,8 +10,8 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import { IoSearchSharp } from "react-icons/io5";
-import { IoIosArrowDropdown } from "react-icons/io";
 import { VscAccount } from "react-icons/vsc";
+import { IoCart } from "react-icons/io5";
 
 function Navbar() {
   return (
@@ -39,8 +39,8 @@ function Navbar() {
           <NavigationMenuList>
             <NavigationMenuItem>
 
-              <NavigationMenuTrigger className='w-full flex justify-around items-center hover:text-white text-lg'>
-                <VscAccount className='h-full font-bold text-xl mx' /> Login
+              <NavigationMenuTrigger className='w-full flex justify-around items-center hover:text-white text-lg transition delay-200'>
+                <VscAccount className='h-full font-bold text-xl mx-1' /> Login
               </NavigationMenuTrigger>
 
               <NavigationMenuContent>
@@ -54,7 +54,9 @@ function Navbar() {
         </NavigationMenu>
 
       </div>
-
+      <div className="w-fit  flex justify-around items-center  text-xl hover:bg-gray-100 px-2 py-1 rounded-md transition-all delay-300">
+        <IoCart className='mx-1'/> Cart
+      </div>
 
 
     </div>
