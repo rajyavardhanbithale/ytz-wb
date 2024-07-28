@@ -14,6 +14,7 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar"
+import { FaAngleDown } from "react-icons/fa";
 
 function Main_menu() {
   return (
@@ -21,14 +22,14 @@ function Main_menu() {
       <MenubarMenu>
         <MenubarTrigger className='flex flex-col justify-center items-center'>
           <img className='w-10 h-20' src="/grocery.jpg" alt="afs" />
-          Grocery
+          <div className=" w-full flex items-center justify-center">Category <FaAngleDown/></div>
         </MenubarTrigger>
-        <MenubarContent>
+        <MenubarContent className='bg-white '>
           <MenubarItem>
             New Tab <MenubarShortcut>⌘T</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            New Window <MenubarShortcut>⌘N</MenubarShortcut>
+            Brands <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
           <MenubarItem disabled>New Incognito Window</MenubarItem>
           <MenubarSeparator />
@@ -42,7 +43,7 @@ function Main_menu() {
           </MenubarSub>
           <MenubarSeparator />
           <MenubarItem>
-            Print... <MenubarShortcut>⌘P</MenubarShortcut>
+            Buy... <MenubarShortcut>⌘P</MenubarShortcut>
           </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
