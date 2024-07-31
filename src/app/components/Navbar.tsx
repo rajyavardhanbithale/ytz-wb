@@ -12,6 +12,23 @@ import {
 import { IoSearchSharp } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
 import { IoCart } from "react-icons/io5";
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 
 function Navbar() {
   return (
@@ -57,6 +74,28 @@ function Navbar() {
         </div>
         <div className="mx-0 md:ml-2 w-fit h-full flex justify-around items-center  text-xl hover:bg-gray-100 px-2 py-1 rounded-md transition-all delay-300">
           <IoCart className='mr-1' /> <h1 className='hidden md:block'>Cart</h1>
+        </div>
+
+        <div>
+          <Menubar className='border-none ml-5'>
+            <MenubarMenu>
+              <MenubarTrigger >
+                <BsThreeDotsVertical className='w-5 h-6'/>
+              </MenubarTrigger>
+              <MenubarContent className='bg-white '>
+                <MenubarItem>
+                  Notification Prefrence 
+                </MenubarItem>
+                <MenubarItem>
+                  24 hour Coustomer Care
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>
+                   Download App 
+                </MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+          </Menubar>
         </div>
 
       </div>
