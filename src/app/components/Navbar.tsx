@@ -77,7 +77,7 @@ function Navbar() {
         </div>
 
         <div>
-          <Menubar className='border-none ml-5'>
+          <Menubar className='border-none  md:ml-5'>
             <MenubarMenu>
               <MenubarTrigger >
                 <BsThreeDotsVertical className='w-5 h-6'/>
