@@ -19,7 +19,7 @@ const connectMongo = async () => {
 router.get("/", async (req, res) => {
 
     // fetch records in range
-    const { page, limit, categories, tags } = req.query
+    const { page, limit, categories, tags, id } = req.query
     const pageFetch = parseInt(page as string) || 1
     const limitFetch = parseInt(limit as string) || 5
 
@@ -30,6 +30,11 @@ router.get("/", async (req, res) => {
         // overflow condition
         if (pageFetch < 1 || pageFetch < 1) {
             return res.status(400).json({ message: "Invalid pagination parameters" });
+        }
+
+        if (id) {
+            const result = await collection.find({ id: id }).toArray();
+            return res.status(200).json(result);
         }
 
         let query: any = {};
@@ -48,10 +53,15 @@ router.get("/", async (req, res) => {
             const categoriesArray = categories.map(tag => tag.toString().trim());
             query.categories = { $in: categoriesArray };
         }
-        
-        
-        const skip = (pageFetch - 1) * limitFetch;
-        const result = await collection.find(query).skip(skip).limit(limitFetch).toArray();
+
+        if ((parseInt(page as string) || 0) !== 0 && (parseInt(limit as string) || 0) !== 0) {
+            const skip = (pageFetch - 1) * limitFetch;
+            const result = await collection.find(query).skip(skip).limit(limitFetch).toArray();
+            return res.status(200).json(result);
+
+        }
+
+        const result = await collection.find().toArray();
         return res.status(200).json(result);
 
     } catch (error) {
