@@ -1,5 +1,4 @@
 
-import DemoClientComponent from './components/clientComponent'
 import Main_menu from './components/Main_menu'
 import SearchBar from './components/SearchBar'
 import Carousel_comp from './components/Carousel_comp'
