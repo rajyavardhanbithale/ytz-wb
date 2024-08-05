@@ -1,14 +1,21 @@
 import express from 'express'
+import cors from 'cors';
 import { expMiddleware } from "./middleware"
+
+
 import addProduct from './product/addProduct';
 import updateProduct from './product/updateProduct';
 import deleteProduct from './product/deleteProduct';
 import getProduct from './product/getProduct';
+import cookieParser from "cookie-parser";
 
 const PORT = process.env.SERVER_PORT || 3001
 const app = express()
 app.use(express.json())
+app.use(cookieParser());
+
 app.use(expMiddleware)
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.json({

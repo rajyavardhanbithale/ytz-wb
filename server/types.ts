@@ -7,9 +7,9 @@ interface Product {
     price: number;
     discountPrice: number;
     totalAvailable: number;
-    category: string;
+    category: string[];
     tags: string[];
-    imageUrls: string[];
+    imageUrls: string[] | null;
     inStock: boolean;
 }
 

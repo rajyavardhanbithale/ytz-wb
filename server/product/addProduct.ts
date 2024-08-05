@@ -58,9 +58,9 @@ const validateProduct = (product: any): product is Product => {
         typeof product.price === 'number' &&
         typeof product.discountPrice === 'number' &&
         typeof product.totalAvailable === 'number' &&
-        typeof product.category === 'string' &&
         Array.isArray(product.tags) &&
-        Array.isArray(product.imageUrls) &&
+        Array.isArray(product.tags) &&
+        // Array.isArray(product.imageUrls) &&
         typeof product.inStock === 'boolean'
     );
 }

@@ -5,8 +5,9 @@ import {
     PayloadAction,
 } from '@reduxjs/toolkit'
 import { ProductData } from '../../../types'
-import { customAlphabet } from 'nanoid'
 import axios from 'axios'
+
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT
 
 type STATE = {
     imageURL: string[] | null
@@ -34,18 +35,16 @@ export const saveProduct = createAsyncThunk(
 
         const merge = {
             ...productData,
-            id: nanoid(),
             tags:
                 typeof productData.tags === 'string' &&
                 productData.tags.split(','),
-            timestamp: Date.now(),
             category:
                 typeof productData.category === 'string' &&
                 productData.category.split(','),
             imageURL: imageData,
         }
 
-        const req = axios.post('/api/product-add', merge)
+        const req = axios.post(`${API_ENDPOINT}/api/v1/product/add`, merge)
 
         return req
     }
@@ -56,40 +55,26 @@ export const updateProduct = createAsyncThunk(
     async (action: { productData: ProductData; id: string }) => {
         const { productData, id } = action
 
-        const merge = {
-            ...productData,
-            id: id,
-            tags:
-                typeof productData.tags === 'string' &&
-                productData.tags.split(','),
-            category:
-                typeof productData.category === 'string' &&
-                productData.category.split(','),
-        }
-        const req = axios.post('/api/product-update', merge)
+        const req = await axios.put(`${API_ENDPOINT}/api/v1/product/update/${id}`, productData)
 
-        return req
+        return req.status
+
     }
 )
 
 export const fetchProduct = createAsyncThunk('product/fetch', async () => {
-    // const response = await axios.get('/api/product-get')
-    // return response.data.data as ProductData[]
-    const response = await fetch('/api/product-get', { cache: 'force-cache',next:{revalidate: 300} })
-    const data = await response.json()
 
+    const response = await axios.get(`${API_ENDPOINT}/api/v1/product/get`)
 
-    return data.data as ProductData[]
+    return response.data as ProductData[]
 })
 
 export const deleteProduct = createAsyncThunk(
     'product/delete',
     async (productID: string) => {
-        const response = await axios.get(
-            `http://localhost:3000/api/product-delete?productID=${productID}`
-        )
+        const response = await axios.delete(`${API_ENDPOINT}/api/v1/product/delete/${productID}`)
 
-        return response.data
+        return response.status
     }
 )
 

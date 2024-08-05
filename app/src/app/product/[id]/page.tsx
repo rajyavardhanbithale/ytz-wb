@@ -5,15 +5,15 @@ import ProductPageImage from '../../components/Product/ProductPageImage'
 import ProductNotFound from '../../components/Product/ProductNotFound'
 import { ProductData } from '@/types'
 
-const pathname = process.env.NEXT_PUBLIC_PATHNAME
+
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT
 
 async function fetchProduct(props: { productID: string }) {
     const response = await fetch(
-        `${pathname}/api/product-get?id=${props.productID}`
-        , { cache: 'no-store' }
+        `${API_ENDPOINT}/api/v1/product/get?id=${props.productID}`
     )
     const product = await response.json()
-    return product as ProductData
+    return product[0] as ProductData
 }
 
 export async function generateMetadata({ params }: any) {
@@ -32,6 +32,7 @@ export default async function ProductPage({ params }: any) {
     const productID = params.id
     const product = await fetchProduct({ productID: productID })
 
+    
     return (
         <>
             {product && (
@@ -89,7 +90,7 @@ export default async function ProductPage({ params }: any) {
                                         product.category.map((cat, idx) => (
                                             <span
                                                 key={idx}
-                                                className="cursor-pointer bg-blue-100 text-blue-500 px-3 py-1 rounded-full text-sm font-semibold"
+                                                className="cursor-pointer capitalize bg-blue-100 text-blue-500 px-3 py-1 rounded-full text-sm font-semibold"
                                             >
                                                 {cat}
                                             </span>
@@ -101,7 +102,7 @@ export default async function ProductPage({ params }: any) {
                                         product.tags.map((tag, idx) => (
                                             <span
                                                 key={idx}
-                                                className="cursor-pointer bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold"
+                                                className="cursor-pointer capitalize bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold"
                                             >
                                                 {tag}
                                             </span>
