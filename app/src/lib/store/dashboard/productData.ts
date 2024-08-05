@@ -41,9 +41,10 @@ export const saveProduct = createAsyncThunk(
             category:
                 typeof productData.category === 'string' &&
                 productData.category.split(','),
-            imageURL: imageData,
+            imageURL: imageData ?? ['default.png'],
         }
-
+   
+        
         const req = axios.post(`${API_ENDPOINT}/api/v1/product/add`, merge)
 
         return req
