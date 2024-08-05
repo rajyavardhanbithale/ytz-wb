@@ -5,6 +5,7 @@ import updateProduct from './product/updateProduct';
 import deleteProduct from './product/deleteProduct';
 import getProduct from './product/getProduct';
 
+const PORT = process.env.SERVER_PORT || 3001
 const app = express()
 app.use(express.json())
 app.use(expMiddleware)
@@ -26,4 +27,4 @@ app.use('/api/v1/product/delete', deleteProduct);
 app.use('/api/v1/product/get', getProduct);
 
 
-app.listen(3000)
+app.listen(PORT)

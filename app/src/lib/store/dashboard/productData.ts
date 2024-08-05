@@ -32,7 +32,6 @@ export const saveProduct = createAsyncThunk(
     }) => {
         const { productData, imageData } = action
 
-        const nanoid = customAlphabet('abcdefghijklnmopqrstqvwxyz123456', 12)
         const merge = {
             ...productData,
             id: nanoid(),

@@ -33,11 +33,10 @@ export default function Admin() {
             {selection === 'Add Product' && <ProductInput />}
 
             <div className="grid grid-cols-8 ">
-                <div className="sm:col-span-2 xl:col-span-1 ">
+                <div className="xl:col-span-1 ">
                     <Sidebar />
-                    123132
                 </div>
-                <div className="col-span-8 sm:col-span-6 xl:col-span-7 ">
+                <div className="col-span-8  xl:col-span-7 ">
                     <ProductListing />
                 </div>
             </div>

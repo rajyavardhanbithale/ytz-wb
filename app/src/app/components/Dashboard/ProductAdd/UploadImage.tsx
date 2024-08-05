@@ -1,6 +1,6 @@
 'use client'
 
-import { UploadDropzone } from '@bytescale/upload-widget-react'
+
 import { Button } from '@/components/ui/button'
 import {
     Dialog,
@@ -16,16 +16,7 @@ import { AppDispatch, RootState } from '@/lib/store'
 import { getImageUrl } from '@/lib/store/dashboard/productData'
 import { useState } from 'react'
 
-const options = {
-    apiKey: process.env.NEXT_PUBLIC_BYTESCALE_API || '',
-    maxFileCount: 1,
-    showFinishButton: true,
-    styles: {
-        colors: {
-            primary: '#377dff',
-        },
-    },
-}
+
 
 export default function UploadImage() {
     const [open, setOpen] = useState<boolean>(false)
@@ -53,14 +44,10 @@ export default function UploadImage() {
                             you&apos;re done.
                         </DialogDescription>
                     </DialogHeader>
-                    <UploadDropzone
-                        options={options}
-                        onComplete={(files) =>
-                            image(files.map((x) => x.fileUrl).join('\n'))
-                        }
-                        width="800px"
-                        height="500px"
-                    />
+                   
+                   {/* 
+                        image upload here
+                   */}
                 </DialogContent>
             </Dialog>
         </>
