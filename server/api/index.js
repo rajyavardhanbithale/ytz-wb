@@ -1,21 +1,20 @@
-import express from 'express'
-import cors from 'cors';
-import { expMiddleware } from "./middleware"
-import cookieParser from "cookie-parser";
+const express = require('express');
+const cors = require('cors');
 
+const cookieParser = require('cookie-parser');
 
-import addProduct from './product/addProduct';
-import updateProduct from './product/updateProduct';
-import deleteProduct from './product/deleteProduct';
-import getProduct from './product/getProduct';
-import offers from './home/offers'
+const addProduct = require('./product/addProduct');
+const updateProduct = require('./product/updateProduct');
+const deleteProduct = require('./product/deleteProduct');
+const getProduct = require('./product/getProduct');
+const offers = require('./home/offers');
 
 const PORT = process.env.SERVER_PORT || 3001
 const app = express()
 app.use(express.json())
 app.use(cookieParser());
 
-app.use(expMiddleware)
+
 app.use(cors())
 
 app.get('/', (req, res) => {
@@ -37,3 +36,4 @@ app.use('/api/v1/offers/', offers);
 
 
 app.listen(PORT)
+module.exports = app;
