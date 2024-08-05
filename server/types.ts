@@ -13,5 +13,11 @@ interface Product {
     inStock: boolean;
 }
 
+interface Offers {
+    productId: string
+    startDate?: number,
+    endDate?: number
+}
 
-export type { Product };
+
+export type { Product, Offers };
