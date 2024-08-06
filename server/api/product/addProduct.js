@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Product = require('./models/Product'); // Adjust the path as needed
+const Product = require('./models/Product');
 
 const router = express.Router();
 
