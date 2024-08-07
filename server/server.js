@@ -5,12 +5,12 @@ import razorpay from 'razorpay'
 
 const PORT = process.env.PORT || 5000;
 
-// cloudinary
-// cloudinary.v2.config({
-//     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-//     api_key : process.env.CAPI_KEY,
-//     api_secret: process.env.CAPI_SECRET,
-// });
+cloudinary
+cloudinary.v2.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key : process.env.CAPI_KEY,
+    api_secret: process.env.CAPI_SECRET,
+});
 
 // export const Razorpay = new razorpay({
 //     key_id : process.env.RAZORPAY_KEY_ID,
