@@ -1,6 +1,7 @@
 import Product from "../models/Product.model.js";
 import AppError from "../utils/error.utils.js";
 import cloudnairy from "cloudinary";
+import fs from 'fs/promises';
 
 const addProduct = async (req,res,next)=>{
     try{
@@ -47,7 +48,7 @@ const addProduct = async (req,res,next)=>{
             message: "Product added successfully",
             course
         })
-        
+
     }catch(error){
         return next(new AppError(error.message,500));
     }
